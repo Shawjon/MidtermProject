@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MidtermProject
 {
-    class Product
+    public class Product
     {
         private string Name;
         private Category Category;
@@ -16,6 +16,7 @@ namespace MidtermProject
        
         public Product()
         {
+            Quantity = 50;
         }
         public Product(string name,Category category, string description, decimal price)
         {
