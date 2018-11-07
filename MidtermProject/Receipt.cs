@@ -96,7 +96,9 @@ namespace MidtermProject
                     }
                     else if (x == 2)
                     {
-                       
+                        string creditCardNumber = Validator.ValidateCreditCardNumber();
+                        string expiration = Validator.ValidateExpiration();
+                        string CVV = Validator.ValidateCVV();
                         continue;
                     }
                     else if (x == 3)

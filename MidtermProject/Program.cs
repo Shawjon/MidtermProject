@@ -36,6 +36,12 @@ namespace MidtermProject
                         Receipt.getTotal(receipts);
                         receipts.Clear();
                         Console.ReadKey();
+                        Console.WriteLine("Enter in a creditcard number: ");
+                        string creditcard = Validator.ValidateCreditCardNumber();
+                        Console.WriteLine(creditcard);
+                        
+                        
+                        Console.ReadKey();
                         continue;
                     }
                     else if (x == 3)

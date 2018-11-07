@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MidtermProject
 {
-    class Validator
+    public class Validator
     {
         public static string ValidateChoice()
         {
@@ -133,6 +133,95 @@ namespace MidtermProject
                 Console.Write("That is not valid entry, try again: ");
                 Return = ValidateString();
             }
+            return Return;
+
+        }
+        public static string ValidateCreditCardNumber()
+        {
+            string Return = Console.ReadLine();
+
+            ///int temp;
+            
+            try
+            {
+                
+                if (Regex.IsMatch(Return, @"^(?:\d[ -]*?){13,16}$"))
+                {
+                    string last4 = "*" + Return.Substring(Return.Length - 4);
+                    Return = last4;
+                    return Return;
+                }
+                else
+                {
+                    Console.Write("Sorry, that is not a valid entry, try again: ");
+                    Return = ValidateCreditCardNumber(); 
+                }
+
+            }
+            catch (FormatException)
+            {
+                Console.Write("That is not valid entry, try again: ");
+                Return = ValidateCreditCardNumber();
+            }
+            ///temp = Convert.ToInt32(Return);
+            return Return ;
+
+        }
+        public static string ValidateCVV()
+        {
+            string Return = Console.ReadLine();
+
+            ///int temp;
+
+            try
+            {
+
+                if (Regex.IsMatch(Return, @"^\d\d\d$"))
+                {
+                    return Return;
+                }
+                else
+                {
+                    Console.Write("Sorry, that is not a valid entry, try again: ");
+                    Return = ValidateCVV();
+                }
+
+            }
+            catch (FormatException)
+            {
+                Console.Write("That is not valid entry, try again: ");
+                Return = ValidateCVV();
+            }
+            ///temp = Convert.ToInt32(Return);
+            return Return;
+
+        }
+        public static string ValidateExpiration()
+        {
+            string Return = Console.ReadLine();
+
+            ///int temp;
+
+            try
+            {
+
+                if (Regex.IsMatch(Return, @"^(0[1-9]|1[0-2])[/\\ - .](\d\d)$"))
+                {
+                    return Return;
+                }
+                else
+                {
+                    Console.Write("Sorry, that is not a valid entry, try again: ");
+                    Return = ValidateExpiration();
+                }
+
+            }
+            catch (FormatException)
+            {
+                Console.Write("That is not valid entry, try again: ");
+                Return = ValidateExpiration();
+            }
+            
             return Return;
 
         }
