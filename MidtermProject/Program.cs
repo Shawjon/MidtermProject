@@ -32,9 +32,9 @@ namespace MidtermProject
                     else if (x == 2)
                     {
                         Menu.OrderFood(ref productsList, ref receipts);
-                        Console.Write($"The total before tax is ");
+                        Console.Clear();
                         Receipt.getTotal(receipts);
-
+                        receipts.Clear();
                         Console.ReadKey();
                         continue;
                     }
@@ -55,10 +55,6 @@ namespace MidtermProject
                 }
             }
 
-
-
-
-           
             Console.ReadLine();
 
         }

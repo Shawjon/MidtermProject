@@ -126,10 +126,16 @@ namespace MidtermProject
 
                     y = (x - 1);
                     Console.WriteLine($"The item you are looking at is {list[y].name} ");
-                    Console.Write($"They are {list[y].price}. We have {list[y].quanity}, how many do you want? ");
+                    if (list[y].quanity == 0)
+                    {
+                        Console.WriteLine($"Sorry, we are out of {list[y].name} please choose something else,");
+                        continue;
+                    }
+                    Console.Write($"They are {list[y].price} an order. We have {list[y].quanity}, how many do you want? ");
                     bool numberStop = true;
                     while (numberStop == true)
                     {
+                    
                         z = Convert.ToInt32(Console.ReadLine());
                         if (z > ((list[y].quanity)))
                         {
@@ -142,6 +148,7 @@ namespace MidtermProject
                             continue;
                         }
                         Console.WriteLine($"You will get {z} {list[y].name} for {list[y].price} a piece");
+                        list[y].quanity = (list[y].quanity - z);
                         Receipt temp = new Receipt(list[y].name, z, list[y].price);
                         receiptList.Add(temp);
                         numberStop = false;
@@ -158,7 +165,7 @@ namespace MidtermProject
                 {
                     Console.WriteLine("That is not valid");
                 }
-                    
+                
 
             }
         }
@@ -171,7 +178,7 @@ namespace MidtermProject
                 int x, y;
                 try
                 {
-                    Console.Write($"Which item would you like to know more about? 1 - {list.Count}.");
+                    Console.Write($"Which item would you like to know more about? 1 - {list.Count}. ");
                     x = Convert.ToInt32(Console.ReadLine());
                     if (x > ((list.Count)))
                     {

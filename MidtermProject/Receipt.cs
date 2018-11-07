@@ -65,12 +65,15 @@ namespace MidtermProject
             {
                 decimal linePrice = list[i].price * list[i].quanity;
                 subTotal = subTotal + linePrice;
+                Console.WriteLine($"{list[i].quanity} {list[i].name} at {list[i].price} = {linePrice}");
             }
             taxAmount = (subTotal * salesTax);
             grandTotal = (subTotal + taxAmount);
-            Console.WriteLine($"Sub Total: {subTotal}");
-            Console.WriteLine($"Tax: {taxAmount.ToString(".00")}");
-            Console.WriteLine($"Grand Total: { grandTotal.ToString(".00")}");
+
+            Console.WriteLine($"Sub Total: ${subTotal}");
+            Console.WriteLine($"Tax: ${taxAmount.ToString(".00")}");
+            Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
+            
         }
     }
 }
