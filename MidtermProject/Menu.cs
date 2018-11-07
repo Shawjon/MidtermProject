@@ -154,7 +154,7 @@ namespace MidtermProject
                         numberStop = false;
                     }
 
-                    goStop = Menu.YesNo("Would you like anything else?");
+                    goStop = Menu.YesNo("Would you like anything else? (y/n) " );
                     
 
 

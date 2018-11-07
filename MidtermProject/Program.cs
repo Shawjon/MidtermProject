@@ -55,7 +55,7 @@ namespace MidtermProject
                 }
             }
 
-            Console.ReadLine();
+           
 
         }
         

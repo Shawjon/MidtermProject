@@ -75,5 +75,46 @@ namespace MidtermProject
             Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
             
         }
+        public static void getPayment()
+        {
+           
+            int x;
+            bool yesNo = true;
+            while (yesNo == true)
+            {
+                try
+                {
+                    Console.WriteLine("How would you like to pay?");
+                    Console.WriteLine("1. By Cash.");
+                    Console.WriteLine("2. By Credit Card.");
+                    Console.WriteLine("3. By Check.");
+                    x = Convert.ToInt32(Console.ReadLine());
+                    if (x == 1)
+                    {
+                        
+                        continue;
+                    }
+                    else if (x == 2)
+                    {
+                       
+                        continue;
+                    }
+                    else if (x == 3)
+                    {
+
+                        continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine("That is not a valid choice, try again");
+                        continue;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("That is not a valid input");
+                }
+            }
+        }
     }
 }
