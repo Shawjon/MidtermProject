@@ -2,11 +2,11 @@
 Pork Chashu Bao,0,Marinated pork belly on a steamed bun,4.00
 Pork Gyoza,0,steamed dumplings with a pork and vegtable filling,6.00
 Edamame,0,salted edamame,3.00
-Shoyu Ramen,1,A soy sauce based broth with Chicken or Pork, veggies, and a soft boiled egg,10.00
+Shoyu Ramen,1,A soy sauce based broth served with Chicken or Pork. Toppings include Veggies and a soft boiled egg,10.00
 Miso Ramen,1,A miso based broth with corn and a soft boiled egg,10.00
-Tonkotsu Ramen,1,A rich Pork bone Broth served with Chicken or Pork, veggies, and a soft boiled egg,12.00
+Tonkotsu Ramen,1,A rich Pork bone Broth served with Chicken or Pork. Toppings include veggies and a soft boiled egg,12.00
 Katsu Curry,1,A hearty sweet curry with a pice of chicken Katsu served with rice,9.00
-Red Curry Ramen,1,A spicy red curry broth with veggies and a soft boiled egg,10.00
+Red Curry Ramen,1,A spicy red curry broth. Toppings include veggies and a soft boiled egg,10.00
 Buffalo Chicken Ramen,1,A chicken based broth paired with buffalo style chicken and veggies,10.00
 Mochi Ice Cream,2,Ice cream wrapped in sweet mochi,3.00
 Taiyaki,2,Red bean paste filled sweets,3.00

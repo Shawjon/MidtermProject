@@ -11,62 +11,58 @@ namespace MidtermProject
     {
         static void Main(string[] args)
         {
-            //Product product1 = new Product("Fired Chicken Bao", 0, "Fried Chicken and a pickle on a steamed bun", 4);
-            //Product product2 = new Product("Pork Chashu Bao", 0, "Marinated pork belly on a steamed bun", 4);
-            //Product product3 = new Product("Pork Gyoza", 0, "Fried dumplings with a pork and vegtable filling", 6);
-            //List<Product> productsList = new List<Product> { product1, product2, product3 };
-
-            //string line;
+           
             List<Product> productsList = new List<Product>();
-
-            //// Read the file and display it line by line.
-            //System.IO.StreamReader file =
-            //    new System.IO.StreamReader(@"C:\Users\jshaw2\source\repos\MidtermProject\MidtermProject\data.txt");
-            //while ((line = file.ReadLine()) != null)
-            //{
-            //    string[] input = line.Split(',');
-            //    productsList.Add(new Product(input[0], (Category)int.Parse(input[1]), input[2],decimal.Parse(input[3])));
-            //}
-
-            //file.Close();
-
-            ///Stream path = @"C:\Users\jshaw2\source\repos\MidtermProject\MidtermProject\data.txt";
-            string currentDirectory = Directory.GetCurrentDirectory();
-            DirectoryInfo directory = new DirectoryInfo(currentDirectory);
-            var fileName = Path.Combine(directory.FullName, "data.txt");
-            FileInfo file = new FileInfo(fileName);
-
-            using (StreamReader sr = new StreamReader(file.FullName))
+            List<Receipt> receipts = new List<Receipt>();
+            Menu.importData(productsList);
+            int x;
+            bool yesNo = true;
+            while (yesNo == true)
             {
-                while (sr.Peek() >= 0)
+                try
                 {
-                    string str;
-                    string[] strArray;
-                    str = sr.ReadLine();
-
-                    strArray = str.Split(',');
-                    Product currentProduct = new Product();
-                    currentProduct.name = strArray[0];
-                    currentProduct.category = (Category)int.Parse(strArray[1]);
-                    currentProduct.description = strArray[2];
-                    decimal price = 12;
-                    if (decimal.TryParse(strArray[3], out price))
+                    Menu.getMainMenu();
+                    x = Convert.ToInt32(Console.ReadLine());
+                    if (x == 1)
                     {
-                        currentProduct.price = price;
+                        Console.Clear();
+                        Menu.PrintList(productsList);
+                        continue;
                     }
-                    //currentProduct.price = int.TryParse(strArray[3], out);
+                    else if (x == 2)
+                    {
+                        Menu.OrderFood(ref productsList, ref receipts);
+                        Console.Write($"The total before tax is ");
+                        Receipt.getTotal(receipts);
 
-                    productsList.Add(currentProduct);
-
-
+                        Console.ReadKey();
+                        continue;
+                    }
+                    else if (x == 3)
+                    {
+                        Console.WriteLine("Have a good day!");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("That is not a valid choice, try again");
+                        continue;
+                    }
                 }
-
-                Menu.getMainMenu();
-                Menu.PrintList(productsList);
-
-                Console.ReadLine();
-
+                catch (FormatException)
+                {
+                    Console.WriteLine("That is not a valid input");
+                }
             }
+
+
+
+
+           
+            Console.ReadLine();
+
         }
+        
     }
 }
+
