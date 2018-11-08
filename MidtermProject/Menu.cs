@@ -114,13 +114,13 @@ namespace MidtermProject
                     if (x > ((list.Count)))
                     {
                         Console.WriteLine("That is not an option to pick");
-                        x = Convert.ToInt32(Console.ReadLine());
+                        //x = Convert.ToInt32(Console.ReadLine());
                         continue;
                     }
                     else if (x < 1)
                     {
                         Console.WriteLine("That is not a valid option");
-                        x = Convert.ToInt32(Console.ReadLine());
+                        //x = Convert.ToInt32(Console.ReadLine());
                         continue;
                     }
 
@@ -135,23 +135,30 @@ namespace MidtermProject
                     bool numberStop = true;
                     while (numberStop == true)
                     {
-                    
-                        z = Convert.ToInt32(Console.ReadLine());
-                        if (z > ((list[y].quanity)))
+                        try
                         {
-                            Console.WriteLine("we do not have that many, how many would you like?");
-                            continue;
+
+                            z = Convert.ToInt32(Console.ReadLine());
+                            if (z > ((list[y].quanity)))
+                            {
+                                Console.WriteLine("we do not have that many, how many would you like?");
+                                continue;
+                            }
+                            else if (z < 1)
+                            {
+                                Console.WriteLine("That is not a valid option, how many would you like?");
+                                continue;
+                            }
+                            Console.WriteLine($"You will get {z} {list[y].name} for {list[y].price} a piece");
+                            list[y].quanity = (list[y].quanity - z);
+                            Receipt temp = new Receipt(list[y].name, z, list[y].price);
+                            receiptList.Add(temp);
+                            numberStop = false;
                         }
-                        else if (z < 1)
+                        catch(FormatException)
                         {
-                            Console.WriteLine("That is not a valid option, how many would you like?");
-                            continue;
+                            Console.Write("That is not a valid input, how many would you like? ");
                         }
-                        Console.WriteLine($"You will get {z} {list[y].name} for {list[y].price} a piece");
-                        list[y].quanity = (list[y].quanity - z);
-                        Receipt temp = new Receipt(list[y].name, z, list[y].price);
-                        receiptList.Add(temp);
-                        numberStop = false;
                     }
 
                     goStop = Menu.YesNo("Would you like anything else? (y/n) " );
