@@ -123,7 +123,9 @@ namespace MidtermProject
                 if (Return <1)
                 {
                     Console.Write("Oops, there is no such thing as negative money. Please try again: ");
-                    temp = ValidateCash();
+                    
+                    Return = ValidateCash();
+
                 }
                 return Return;
             }
