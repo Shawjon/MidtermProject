@@ -18,18 +18,17 @@ namespace MidtermProject
             Console.BackgroundColor = ConsoleColor.DarkRed;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("-----------------------------------------------------------\n" +
-                              "|   Welcome to Roaming Ramen, a ToGo noodle shop          |\n" +
-                              "|            What would you like to do?                   |\n" +
+                              "|   Welcome to Roaming Ramen, a ToGo catering noodle shop |\n" +
+                              "|                What would you like to do?               |\n" +
                               "-----------------------------------------------------------");
             Console.ResetColor();
             Console.WriteLine("1. Look at the menu ");
             Console.WriteLine("2. Start an order ");
             Console.WriteLine("3. Leave ");
         }
-        public static void PrintList(List<Product> productList)
-
+        public static void GetFoodMenu(List<Product> productList)
         {
-           
+            Console.Clear();
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("-----------------------------------------------------------\n" +
@@ -38,8 +37,14 @@ namespace MidtermProject
             Console.ResetColor();
             for (int i = 0; i < productList.Count; i++)
             {
-               Console.WriteLine("# {0,2} | {1,-21} {2,7} {3,6}     {4,8} {5,-4}", (i+1), (productList[i].name),(productList[i].category), (productList[i].price),"Quanitiy",productList[i].quanity);
+                Console.WriteLine("# {0,2} | {1,-21} {2,7} {3,6}     {4,8} {5,-4}", (i + 1), (productList[i].name), (productList[i].category), (productList[i].price), "Quanitiy", productList[i].quanity);
             }
+            Console.WriteLine();
+        }
+        public static void PrintList(List<Product> productList)
+
+        {
+            Menu.GetFoodMenu(productList);
             string message = "Would you like to know more about an item ? (y / n)  ";
             Console.Write(message);
             string entry = Console.ReadLine();
@@ -109,6 +114,7 @@ namespace MidtermProject
                 int x, y,z;
                 try
                 {
+                    Menu.GetFoodMenu(list);
                     Console.Write($"Which item would you like to get? (1 - {list.Count})  ");
                     
                     x = Convert.ToInt32(Console.ReadLine());
@@ -128,6 +134,7 @@ namespace MidtermProject
                     if (list[y].quanity == 0)
                     {
                         Console.WriteLine($"Sorry, we are out of {list[y].name} please choose something else,");
+                        Console.ReadKey();
                         continue;
                     }
                     Console.Write($"They are {list[y].price} an order. We have {list[y].quanity}, how many do you want? ");

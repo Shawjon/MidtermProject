@@ -31,6 +31,7 @@ namespace MidtermProject
                     }
                     else if (x == 2)
                     {
+                        //Menu.GetFoodMenu(productsList);
                         Menu.OrderFood(ref productsList, ref receipts);
                         Console.Clear();
                         Receipt.getTotal(receipts);

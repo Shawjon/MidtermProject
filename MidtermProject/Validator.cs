@@ -126,7 +126,6 @@ namespace MidtermProject
                     temp = ValidateCash();
                 }
                 return Return;
-
             }
             catch (FormatException)
             {
@@ -163,15 +162,11 @@ namespace MidtermProject
         public static string ValidateCreditCardNumber()
         {
             string Return = Console.ReadLine();
-
-            ///int temp;
-            
             try
             {
-                
                 if (Regex.IsMatch(Return, @"^(?:\d[ -]*?){13,16}$"))
                 {
-                    string last4 = "*" + Return.Substring(Return.Length - 4);
+                    string last4 = Return.Substring(Return.Length - 4);
                     Return = last4;
                     return Return;
                 }
@@ -180,23 +175,19 @@ namespace MidtermProject
                     Console.Write("Sorry, that is not a valid entry, try again: ");
                     Return = ValidateCreditCardNumber(); 
                 }
-
             }
             catch (FormatException)
             {
                 Console.Write("That is not valid entry, try again: ");
                 Return = ValidateCreditCardNumber();
             }
-            ///temp = Convert.ToInt32(Return);
             return Return ;
-
         }
         public static string ValidateCVV()
         {
             string Return = Console.ReadLine();
             try
             {
-
                 if (Regex.IsMatch(Return, @"^\d\d\d$"))
                 {
                     return Return;
@@ -206,7 +197,6 @@ namespace MidtermProject
                     Console.Write("Sorry, that is not a valid entry, try again: ");
                     Return = ValidateCVV();
                 }
-
             }
             catch (FormatException)
             {
@@ -220,17 +210,18 @@ namespace MidtermProject
             string Return = Console.ReadLine();
             try
             {
-
                 if (Regex.IsMatch(Return, @"^\d\d\d\d\d\d\d\d\d$"))
                 {
+                    string last4 = Return.Substring(Return.Length - 4);
+                    Return = last4;
                     return Return;
+                    
                 }
                 else
                 {
                     Console.Write("Sorry, that is not a valid entry, try again: ");
                     Return = ValidateRoutingAccountNumber();
                 }
-
             }
             catch (FormatException)
             {
@@ -242,12 +233,8 @@ namespace MidtermProject
         public static string ValidateExpiration()
         {
             string Return = Console.ReadLine();
-
-            ///int temp;
-
             try
             {
-
                 if (Regex.IsMatch(Return, @"^(0[1-9]|1[0-2])[/\\ - .](\d\d)$"))
                 {
                     return Return;
@@ -257,16 +244,13 @@ namespace MidtermProject
                     Console.Write("Sorry, that is not a valid entry, try again: ");
                     Return = ValidateExpiration();
                 }
-
             }
             catch (FormatException)
             {
                 Console.Write("That is not valid entry, try again: ");
                 Return = ValidateExpiration();
             }
-            
             return Return;
-
         }
         public static string ValidateProgram()
         {

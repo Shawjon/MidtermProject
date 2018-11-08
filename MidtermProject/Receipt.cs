@@ -214,7 +214,7 @@ namespace MidtermProject
                         Console.WriteLine($"                      Grand Total: ${grandTotal.ToString(".00")}");
                         //Receipt.getTotal(list);
                         Console.WriteLine();
-                        Console.WriteLine($"You paid with a check\nAccount Number - {AccountNumber}. Rounting Number - {RoutingNumber}.\n");
+                        Console.WriteLine($"You paid with a check\nAccount Number ending in {AccountNumber}.\n");
                         Console.BackgroundColor = ConsoleColor.DarkBlue;
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("--------------------------------------------------------\n" +
