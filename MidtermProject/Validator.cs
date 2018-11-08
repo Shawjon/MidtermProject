@@ -164,7 +164,7 @@ namespace MidtermProject
             string Return = Console.ReadLine();
             try
             {
-                if (Regex.IsMatch(Return, @"^(?:\d[ -]*?){13,16}$"))
+                if (Regex.IsMatch(Return, @"^(\d{4}[-. ]?){4}|\d{4}[-. ]?\d{6}[-. ]?\d{5}$"))
                 {
                     string last4 = Return.Substring(Return.Length - 4);
                     Return = last4;

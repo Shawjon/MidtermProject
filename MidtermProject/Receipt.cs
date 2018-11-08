@@ -155,7 +155,7 @@ namespace MidtermProject
                         Console.Clear();
                         Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
 
-                        Console.Write("What is your Credit Card Number? (13-16 digits) ");
+                        Console.Write("What is your Credit Card Number? (16 digits) ");
                         string creditCardNumber = Validator.ValidateCreditCardNumber();
                         Console.Write("What is the Expiration? (MM/YY) ");
                         string expiration = Validator.ValidateExpiration();
