@@ -112,6 +112,30 @@ namespace MidtermProject
             return temp;
 
         }
+
+        public static decimal ValidateCash()
+        {
+            string test = Console.ReadLine();
+            decimal temp;
+            try
+            {
+                decimal Return = decimal.Parse(test);
+                if (Return <1)
+                {
+                    Console.Write("Oops, there is no such thing as negative money. Please try again: ");
+                    temp = ValidateCash();
+                }
+                return Return;
+
+            }
+            catch (FormatException)
+            {
+                Console.Write("That is not valid, try again: ");
+                temp = ValidateCash();
+            }
+            return temp;
+        }
+
         public static string ValidateString()
         {
             string Return = Console.ReadLine();
@@ -170,9 +194,6 @@ namespace MidtermProject
         public static string ValidateCVV()
         {
             string Return = Console.ReadLine();
-
-            ///int temp;
-
             try
             {
 
@@ -192,9 +213,31 @@ namespace MidtermProject
                 Console.Write("That is not valid entry, try again: ");
                 Return = ValidateCVV();
             }
-            ///temp = Convert.ToInt32(Return);
             return Return;
+        }
+        public static string ValidateRoutingAccountNumber()
+        {
+            string Return = Console.ReadLine();
+            try
+            {
 
+                if (Regex.IsMatch(Return, @"^\d\d\d\d\d\d\d\d\d$"))
+                {
+                    return Return;
+                }
+                else
+                {
+                    Console.Write("Sorry, that is not a valid entry, try again: ");
+                    Return = ValidateRoutingAccountNumber();
+                }
+
+            }
+            catch (FormatException)
+            {
+                Console.Write("That is not valid entry, try again: ");
+                Return = ValidateRoutingAccountNumber();
+            }
+            return Return;
         }
         public static string ValidateExpiration()
         {

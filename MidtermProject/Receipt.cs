@@ -73,10 +73,11 @@ namespace MidtermProject
             Console.WriteLine($"Sub Total: ${subTotal}");
             Console.WriteLine($"Tax: ${taxAmount.ToString(".00")}");
             Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
+            Console.ReadKey();
             
-        }
-        public static void getPayment(List<Receipt> list)
-        {
+        //}
+        //public static void getPayment(List<Receipt> list)
+        //{
            
             
             bool yesNo = true;
@@ -84,6 +85,7 @@ namespace MidtermProject
             {
                 try
                 {
+                    Console.Clear();
                     Console.WriteLine("How would you like to pay?");
                     Console.WriteLine("1. By Cash.");
                     Console.WriteLine("2. By Credit Card.");
@@ -91,8 +93,41 @@ namespace MidtermProject
                     int x = Convert.ToInt32(Console.ReadLine());
                     if (x == 1)
                     {
-                        
-                        continue;
+                        Console.Write("How much cash are you paying with? ");
+                        decimal cash = Validator.ValidateCash();
+                        while (cash < grandTotal)
+                        {
+                            Console.WriteLine("That is not enough to cover the bill, please provide enough money to cover the bill. ");
+                            cash = Validator.ValidateCash();
+                        }
+                        decimal change = cash - grandTotal;
+
+
+                        Console.Clear();
+                        Console.BackgroundColor = ConsoleColor.DarkGreen;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("--------------------------------------------------------\n" +
+                                          "|   Thank you for getting your event catered by        |\n" +
+                                          "|         Roaming Ramen! Here is your Reciept          |\n" +
+                                          "--------------------------------------------------------");
+                        Console.ResetColor();
+                        Console.WriteLine($"Sub Total: ${subTotal}");
+                        Console.WriteLine($"Tax: ${taxAmount.ToString(".00")}");
+                        Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
+                        //Receipt.getTotal(list);
+                        Console.WriteLine();
+                        Console.WriteLine($"You paid with cash.");
+                        Console.WriteLine($"Total: ${grandTotal.ToString(".00")}\nReceived: ${cash}\nChange: ${change.ToString(".00")}");
+                        Console.BackgroundColor = ConsoleColor.DarkGreen;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("--------------------------------------------------------\n" +
+                                          "|                Please come again!                    |\n" +
+                                          "|                                                      |\n" +
+                                          "--------------------------------------------------------");
+                        Console.WriteLine("\n");
+                        Console.ResetColor();
+
+                        break;
                     }
                     else if (x == 2)
                     {
@@ -110,8 +145,10 @@ namespace MidtermProject
                                           "|         Roaming Ramen! Here is your Reciept          |\n" +
                                           "--------------------------------------------------------");
                         Console.ResetColor();
-                        
-                        Receipt.getTotal(list);
+                        Console.WriteLine($"Sub Total: ${subTotal}");
+                        Console.WriteLine($"Tax: ${taxAmount.ToString(".00")}");
+                        Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
+                       // Receipt.getTotal(list);
                         Console.WriteLine();
                         Console.WriteLine($"You paid using your Credit card ending in {creditCardNumber}\n");
                         Console.BackgroundColor = ConsoleColor.DarkRed;
@@ -127,8 +164,36 @@ namespace MidtermProject
                     }
                     else if (x == 3)
                     {
+                        Console.Write("What is your Checking Account Number? (9 digits) ");
+                        string AccountNumber = Validator.ValidateRoutingAccountNumber();
+                        Console.Write("What is the Bank Routing Number? (9 digits) ");
+                        string RoutingNumber = Validator.ValidateRoutingAccountNumber();
+                        
+                        Console.Clear();
+                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("--------------------------------------------------------\n" +
+                                          "|   Thank you for getting your event catered by        |\n" +
+                                          "|         Roaming Ramen! Here is your Reciept          |\n" +
+                                          "--------------------------------------------------------");
+                        Console.ResetColor();
+                        Console.WriteLine($"Sub Total: ${subTotal}");
+                        Console.WriteLine($"Tax: ${taxAmount.ToString(".00")}");
+                        Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
+                        //Receipt.getTotal(list);
+                        Console.WriteLine();
+                        Console.WriteLine($"You paid with a check\nAccount Number - {AccountNumber}. Rounting Number - {RoutingNumber}.\n");
+                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("--------------------------------------------------------\n" +
+                                          "|                Please come again!                    |\n" +
+                                          "|                                                      |\n" +
+                                          "--------------------------------------------------------");
+                        Console.WriteLine("\n");
+                        Console.ResetColor();
 
-                        continue;
+                        break;
+
                     }
                     else
                     {
