@@ -69,16 +69,16 @@ namespace MidtermProject
             }
             taxAmount = (subTotal * salesTax);
             grandTotal = (subTotal + taxAmount);
-
+            Console.WriteLine("\n");
             Console.WriteLine($"Sub Total: ${subTotal}");
             Console.WriteLine($"Tax: ${taxAmount.ToString(".00")}");
             Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
             
         }
-        public static void getPayment()
+        public static void getPayment(List<Receipt> list)
         {
            
-            int x;
+            
             bool yesNo = true;
             while (yesNo == true)
             {
@@ -88,7 +88,7 @@ namespace MidtermProject
                     Console.WriteLine("1. By Cash.");
                     Console.WriteLine("2. By Credit Card.");
                     Console.WriteLine("3. By Check.");
-                    x = Convert.ToInt32(Console.ReadLine());
+                    int x = Convert.ToInt32(Console.ReadLine());
                     if (x == 1)
                     {
                         
@@ -96,10 +96,34 @@ namespace MidtermProject
                     }
                     else if (x == 2)
                     {
+                        Console.Write("What is your Credit Card Number? (13-16 digits) ");
                         string creditCardNumber = Validator.ValidateCreditCardNumber();
+                        Console.Write("What is the Expiration? (MM/YY) ");
                         string expiration = Validator.ValidateExpiration();
+                        Console.Write("What is the Security Code? (###) ");
                         string CVV = Validator.ValidateCVV();
-                        continue;
+                        Console.Clear();
+                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("--------------------------------------------------------\n" +
+                                          "|   Thank you for getting your event catered by        |\n" +
+                                          "|         Roaming Ramen! Here is your Reciept          |\n" +
+                                          "--------------------------------------------------------");
+                        Console.ResetColor();
+                        
+                        Receipt.getTotal(list);
+                        Console.WriteLine();
+                        Console.WriteLine($"You paid using your Credit card ending in {creditCardNumber}\n");
+                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("--------------------------------------------------------\n" +
+                                          "|                Please come again!                    |\n" +
+                                          "|                                                      |\n" +
+                                          "--------------------------------------------------------");
+                        Console.WriteLine("\n");
+                        Console.ResetColor();
+
+                        break;
                     }
                     else if (x == 3)
                     {

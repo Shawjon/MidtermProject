@@ -34,15 +34,10 @@ namespace MidtermProject
                         Menu.OrderFood(ref productsList, ref receipts);
                         Console.Clear();
                         Receipt.getTotal(receipts);
+                        Receipt.getPayment(receipts);
                         receipts.Clear();
-                        Console.ReadKey();
-                        Console.Write("Enter in a creditcard number: ");
-                        string creditcard = Validator.ValidateCreditCardNumber();
-                        Console.Write("Enter in the security code: ");
-                        string cvv = Validator.ValidateCVV();
-                        Console.Write("Enter in the epiration date (00/00): ");
-                        string Exp = Validator.ValidateExpiration();
-                        Console.WriteLine($"{creditcard} CVV:{cvv}. Expiration: {Exp}. ");
+                        //Console.ReadKey();
+                       
                         
                         
                         Console.ReadKey();
