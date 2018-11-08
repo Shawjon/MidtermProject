@@ -34,13 +34,9 @@ namespace MidtermProject
                         Menu.OrderFood(ref productsList, ref receipts);
                         Console.Clear();
                         Receipt.getTotal(receipts);
-                        //Console.WriteLine();
-                        //Receipt.getPayment(receipts);
+                        
                         receipts.Clear();
-                        //Console.ReadKey();
-                       
-                        
-                        
+
                         Console.ReadKey();
                         continue;
                     }

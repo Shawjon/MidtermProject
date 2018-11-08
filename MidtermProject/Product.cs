@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MidtermProject
 {
-    public class Product
+    public class Product:IComparable<Product>
     {
         private string Name;
         private Category Category;
@@ -80,6 +80,15 @@ namespace MidtermProject
             {
                 return Quantity;
             }
+        }
+        public int CompareTo(Product temp)
+        {
+
+            if (this.Category == temp.Category)
+            {
+                return this.Name.CompareTo(temp.Name);
+            }
+            return this.Category.CompareTo(temp.Category);
         }
 
     }

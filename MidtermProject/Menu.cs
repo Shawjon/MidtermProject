@@ -29,8 +29,8 @@ namespace MidtermProject
         public static void PrintList(List<Product> productList)
 
         {
-            //int y;
-           /// Console.BackgroundColor = ConsoleColor.DarkBlue;
+           
+            /// Console.BackgroundColor = ConsoleColor.DarkBlue;
             ///Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("-----------------------------------------------------------\n" +
                               "|                          Menu                           |\n" +
@@ -95,6 +95,7 @@ namespace MidtermProject
                         currentProduct.price = price;
                     }
                     list.Add(currentProduct);
+                    list.Sort();
                 }
 
             }
@@ -109,18 +110,16 @@ namespace MidtermProject
                 try
                 {
                     Console.Write($"Which item would you like to get? (1 - {list.Count})  ");
-                    //x = 0;
+                    
                     x = Convert.ToInt32(Console.ReadLine());
                     if (x > ((list.Count)))
                     {
                         Console.WriteLine("That is not an option to pick");
-                        //x = Convert.ToInt32(Console.ReadLine());
                         continue;
                     }
                     else if (x < 1)
                     {
                         Console.WriteLine("That is not a valid option");
-                        //x = Convert.ToInt32(Console.ReadLine());
                         continue;
                     }
 
@@ -162,11 +161,7 @@ namespace MidtermProject
                     }
 
                     goStop = Menu.YesNo("Would you like anything else? (y/n) " );
-                    
 
-
-
-                    
                  }
                 catch(FormatException)
                 {

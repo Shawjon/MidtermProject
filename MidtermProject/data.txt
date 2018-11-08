@@ -10,3 +10,4 @@ Red Curry Ramen,1,A spicy red curry broth. Toppings include veggies and a soft b
 Buffalo Chicken Ramen,1,A chicken based broth paired with buffalo style chicken and veggies,10.00
 Mochi Ice Cream,2,Ice cream wrapped in sweet mochi,3.00
 Taiyaki,2,Red bean paste filled sweets,3.00
+Fried Rice,0,Fried rice with veggies and an egg and you choice of meat,5.00
