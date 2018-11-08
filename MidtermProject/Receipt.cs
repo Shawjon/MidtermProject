@@ -55,6 +55,15 @@ namespace MidtermProject
                 return Quantity;
             }
         }
+        public static void printTop(List<Receipt> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                decimal linePrice = list[i].price * list[i].quanity;
+                //Console.WriteLine($"{list[i].quanity} {list[i].name} at {list[i].price} = {linePrice}");
+                Console.WriteLine("{0,2} {1,-21} at {2,5} = {3,3}",  (list[i].quanity), (list[i].name), (list[i].price), (linePrice));
+            }
+        }
         public static void getTotal(List<Receipt> list)
         {
             decimal subTotal = 0;
@@ -65,14 +74,16 @@ namespace MidtermProject
             {
                 decimal linePrice = list[i].price * list[i].quanity;
                 subTotal = subTotal + linePrice;
-                Console.WriteLine($"{list[i].quanity} {list[i].name} at {list[i].price} = {linePrice}");
+                //Console.WriteLine($"{list[i].quanity} {list[i].name} at {list[i].price} = {linePrice}");
+                Console.WriteLine("{0,2} {1,-21} at {2,5} = {3,3}", (list[i].quanity), (list[i].name), (list[i].price), (linePrice));
+
             }
             taxAmount = (subTotal * salesTax);
             grandTotal = (subTotal + taxAmount);
             Console.WriteLine("\n");
-            Console.WriteLine($"Sub Total: ${subTotal}");
-            Console.WriteLine($"Tax: ${taxAmount.ToString(".00")}");
-            Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
+            Console.WriteLine($"                        Sub Total: ${subTotal}");
+            Console.WriteLine($"                              Tax:  ${taxAmount.ToString(".00")}");
+            Console.WriteLine($"                      Grand Total: ${grandTotal.ToString(".00")}");
             Console.ReadKey();
             
         //}
@@ -86,6 +97,8 @@ namespace MidtermProject
                 try
                 {
                     Console.Clear();
+                    Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
+
                     Console.WriteLine("How would you like to pay?");
                     Console.WriteLine("1. By Cash.");
                     Console.WriteLine("2. By Credit Card.");
@@ -93,6 +106,8 @@ namespace MidtermProject
                     int x = Convert.ToInt32(Console.ReadLine());
                     if (x == 1)
                     {
+                        Console.Clear();
+                        Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
                         Console.Write("How much cash are you paying with? ");
                         decimal cash = Validator.ValidateCash();
                         while (cash < grandTotal)
@@ -111,26 +126,35 @@ namespace MidtermProject
                                           "|         Roaming Ramen! Here is your Reciept          |\n" +
                                           "--------------------------------------------------------");
                         Console.ResetColor();
-                        Console.WriteLine($"Sub Total: ${subTotal}");
-                        Console.WriteLine($"Tax: ${taxAmount.ToString(".00")}");
-                        Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
+                        Receipt.printTop(list);
+                        Console.WriteLine();
+                        Console.WriteLine("--------------------------------------------------------");
+                        Console.WriteLine($"                        Sub Total: ${subTotal}");
+                        Console.WriteLine($"                              Tax:  ${taxAmount.ToString(".00")}");
+                        Console.WriteLine($"                      Grand Total: ${grandTotal.ToString(".00")}");
                         //Receipt.getTotal(list);
                         Console.WriteLine();
-                        Console.WriteLine($"You paid with cash.");
-                        Console.WriteLine($"Total: ${grandTotal.ToString(".00")}\nReceived: ${cash}\nChange: ${change.ToString(".00")}");
+                        Console.WriteLine("                           Paid with cash.");
+                        Console.WriteLine($"                            Total: ${grandTotal.ToString(".00")}");
+                        Console.WriteLine($"                         Received: ${cash}");
+                        Console.WriteLine($"                           Change: ${change.ToString(".00")}");
+                        //Console.WriteLine($"Total: ${grandTotal.ToString(".00")}\nReceived: ${cash}\nChange: ${change.ToString(".00")}");
                         Console.BackgroundColor = ConsoleColor.DarkGreen;
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("--------------------------------------------------------\n" +
                                           "|                Please come again!                    |\n" +
                                           "|                                                      |\n" +
                                           "--------------------------------------------------------");
-                        Console.WriteLine("\n");
+                        Console.WriteLine();
                         Console.ResetColor();
 
                         break;
                     }
                     else if (x == 2)
                     {
+                        Console.Clear();
+                        Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
+
                         Console.Write("What is your Credit Card Number? (13-16 digits) ");
                         string creditCardNumber = Validator.ValidateCreditCardNumber();
                         Console.Write("What is the Expiration? (MM/YY) ");
@@ -145,10 +169,13 @@ namespace MidtermProject
                                           "|         Roaming Ramen! Here is your Reciept          |\n" +
                                           "--------------------------------------------------------");
                         Console.ResetColor();
-                        Console.WriteLine($"Sub Total: ${subTotal}");
-                        Console.WriteLine($"Tax: ${taxAmount.ToString(".00")}");
-                        Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
-                       // Receipt.getTotal(list);
+                        Receipt.printTop(list);
+                        Console.WriteLine();
+                        Console.WriteLine("--------------------------------------------------------");
+                        Console.WriteLine($"                        Sub Total: ${subTotal}");
+                        Console.WriteLine($"                              Tax:  ${taxAmount.ToString(".00")}");
+                        Console.WriteLine($"                      Grand Total: ${grandTotal.ToString(".00")}");
+                        // Receipt.getTotal(list);
                         Console.WriteLine();
                         Console.WriteLine($"You paid using your Credit card ending in {creditCardNumber}\n");
                         Console.BackgroundColor = ConsoleColor.DarkRed;
@@ -157,13 +184,15 @@ namespace MidtermProject
                                           "|                Please come again!                    |\n" +
                                           "|                                                      |\n" +
                                           "--------------------------------------------------------");
-                        Console.WriteLine("\n");
+                        Console.WriteLine();
                         Console.ResetColor();
 
                         break;
                     }
                     else if (x == 3)
                     {
+                        Console.Clear();
+                        Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
                         Console.Write("What is your Checking Account Number? (9 digits) ");
                         string AccountNumber = Validator.ValidateRoutingAccountNumber();
                         Console.Write("What is the Bank Routing Number? (9 digits) ");
@@ -177,9 +206,12 @@ namespace MidtermProject
                                           "|         Roaming Ramen! Here is your Reciept          |\n" +
                                           "--------------------------------------------------------");
                         Console.ResetColor();
-                        Console.WriteLine($"Sub Total: ${subTotal}");
-                        Console.WriteLine($"Tax: ${taxAmount.ToString(".00")}");
-                        Console.WriteLine($"Grand Total: ${grandTotal.ToString(".00")}");
+                        Receipt.printTop(list);
+                        Console.WriteLine();
+                        Console.WriteLine("--------------------------------------------------------");
+                        Console.WriteLine($"                        Sub Total: ${subTotal}");
+                        Console.WriteLine($"                              Tax:  ${taxAmount.ToString(".00")}");
+                        Console.WriteLine($"                      Grand Total: ${grandTotal.ToString(".00")}");
                         //Receipt.getTotal(list);
                         Console.WriteLine();
                         Console.WriteLine($"You paid with a check\nAccount Number - {AccountNumber}. Rounting Number - {RoutingNumber}.\n");
@@ -189,7 +221,7 @@ namespace MidtermProject
                                           "|                Please come again!                    |\n" +
                                           "|                                                      |\n" +
                                           "--------------------------------------------------------");
-                        Console.WriteLine("\n");
+                        Console.WriteLine();
                         Console.ResetColor();
 
                         break;

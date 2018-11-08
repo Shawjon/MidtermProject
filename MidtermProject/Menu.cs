@@ -30,15 +30,15 @@ namespace MidtermProject
 
         {
            
-            /// Console.BackgroundColor = ConsoleColor.DarkBlue;
-            ///Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("-----------------------------------------------------------\n" +
                               "|                          Menu                           |\n" +
                               "-----------------------------------------------------------");
-            ///Console.ResetColor();
+            Console.ResetColor();
             for (int i = 0; i < productList.Count; i++)
             {
-               Console.WriteLine("# {0,2} | {1,-21} {2,5} {3,3}", (i+1), (productList[i].name),(productList[i].category), (productList[i].price));
+               Console.WriteLine("# {0,2} | {1,-21} {2,7} {3,6}     {4,8} {5,-4}", (i+1), (productList[i].name),(productList[i].category), (productList[i].price),"Quanitiy",productList[i].quanity);
             }
             string message = "Would you like to know more about an item ? (y / n)  ";
             Console.Write(message);
